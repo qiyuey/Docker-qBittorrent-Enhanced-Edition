@@ -1,5 +1,5 @@
 FROM lsiobase/alpine:3.17-69ac1933-ls26 as builder
-LABEL maintainer="SuperNG6"
+LABEL maintainer="qiyuey"
 
 WORKDIR /qbittorrent
 
@@ -18,7 +18,7 @@ FROM lsiobase/alpine:3.17-69ac1933-ls26
 
 # environment settings
 ENV TZ=Asia/Shanghai
-ENV WEBUIPORT=8080
+ENV WEBUIPORT=6363
 
 # add local files and install qbitorrent
 COPY root /
@@ -30,5 +30,5 @@ RUN  apk add --no-cache python3 \
 &&   chmod a+x  /usr/local/bin/qbittorrent-nox  
 
 # ports and volumes
-VOLUME /downloads /config
-EXPOSE 8080  6881  6881/udp
+VOLUME /downloads /config /cert
+EXPOSE 6363  6881  6881/udp
